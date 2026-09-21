@@ -38,7 +38,11 @@ export default function DashboardLayout() {
             </NavLink>
           ))}
           <div className="admin-nav__logout">
-            <button className="icon-btn" onClick={handleLogout} style={{ width: '100%', color: 'var(--color-sand)', borderColor: 'rgba(255,255,255,0.3)' }}>
+            <button
+              className="icon-btn"
+              onClick={handleLogout}
+              style={{ width: '100%', color: '#f8f3ee', borderColor: 'rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.03)' }}
+            >
               Log out
             </button>
           </div>
@@ -50,7 +54,7 @@ export default function DashboardLayout() {
           <button className="icon-btn admin-mobile-toggle" onClick={() => setSidebarOpen((o) => !o)}>
             Menu
           </button>
-          <span style={{ color: 'var(--color-palm)', fontSize: '0.9rem' }}>
+          <span className="topbar-meta">
             Signed in as {admin?.fullName || admin?.email}
           </span>
         </div>
