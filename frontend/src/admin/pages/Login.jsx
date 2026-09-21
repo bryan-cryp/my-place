@@ -29,8 +29,9 @@ export default function Login() {
   return (
     <div className="login-shell">
       <div className="login-card">
-        <p className="eyebrow">My Place</p>
-        <h1 style={{ fontSize: '1.7rem', marginBottom: '1.5rem' }}>Admin Login</h1>
+        <span className="login-brand">My Place</span>
+        <h1>Admin Login</h1>
+        <p className="login-subtitle">Access the villa dashboard and management area.</p>
 
         <ErrorBanner message={error} />
 

@@ -40,53 +40,61 @@ export default function SettingsAdmin() {
   if (!form) return <ErrorBanner message={error || 'Settings could not be loaded.'} />;
 
   return (
-    <div>
-      <h1 style={{ fontSize: '1.7rem', marginBottom: '1.5rem' }}>Villa Settings</h1>
+    <div className="admin-page">
+      <div className="admin-page__header">
+        <div>
+          <h1 className="admin-page__title">Villa Settings</h1>
+          <p className="admin-page__subtitle">Update the villa profile, contact details, and guest information.</p>
+        </div>
+      </div>
+
       <ErrorBanner message={error} />
       <SuccessBanner message={success} />
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: '680px' }}>
-        <div className="form-field">
-          <label htmlFor="villa_description">Villa description</label>
-          <textarea id="villa_description" rows={4} value={form.villa_description || ''} onChange={(e) => update('villa_description', e.target.value)} />
-        </div>
-
-        <div className="form-row">
+      <div className="admin-card" style={{ maxWidth: '760px' }}>
+        <form onSubmit={handleSubmit}>
           <div className="form-field">
-            <label htmlFor="contact_email">Contact email</label>
-            <input id="contact_email" type="email" value={form.contact_email || ''} onChange={(e) => update('contact_email', e.target.value)} />
+            <label htmlFor="villa_description">Villa description</label>
+            <textarea id="villa_description" rows={4} value={form.villa_description || ''} onChange={(e) => update('villa_description', e.target.value)} />
           </div>
+
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="contact_email">Contact email</label>
+              <input id="contact_email" type="email" value={form.contact_email || ''} onChange={(e) => update('contact_email', e.target.value)} />
+            </div>
+            <div className="form-field">
+              <label htmlFor="contact_phone">Contact phone</label>
+              <input id="contact_phone" value={form.contact_phone || ''} onChange={(e) => update('contact_phone', e.target.value)} />
+            </div>
+          </div>
+
           <div className="form-field">
-            <label htmlFor="contact_phone">Contact phone</label>
-            <input id="contact_phone" value={form.contact_phone || ''} onChange={(e) => update('contact_phone', e.target.value)} />
+            <label htmlFor="whatsapp_number">WhatsApp number (international format, no + or spaces)</label>
+            <input id="whatsapp_number" value={form.whatsapp_number || ''} onChange={(e) => update('whatsapp_number', e.target.value)} placeholder="254700000000" />
           </div>
-        </div>
 
-        <div className="form-field">
-          <label htmlFor="whatsapp_number">WhatsApp number (international format, no + or spaces)</label>
-          <input id="whatsapp_number" value={form.whatsapp_number || ''} onChange={(e) => update('whatsapp_number', e.target.value)} placeholder="254700000000" />
-        </div>
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="check_in_time">Check-in time</label>
+              <input id="check_in_time" value={form.check_in_time || ''} onChange={(e) => update('check_in_time', e.target.value)} />
+            </div>
+            <div className="form-field">
+              <label htmlFor="check_out_time">Check-out time</label>
+              <input id="check_out_time" value={form.check_out_time || ''} onChange={(e) => update('check_out_time', e.target.value)} />
+            </div>
+          </div>
 
-        <div className="form-row">
           <div className="form-field">
-            <label htmlFor="check_in_time">Check-in time</label>
-            <input id="check_in_time" value={form.check_in_time || ''} onChange={(e) => update('check_in_time', e.target.value)} />
+            <label htmlFor="location_info">Location information</label>
+            <textarea id="location_info" rows={2} value={form.location_info || ''} onChange={(e) => update('location_info', e.target.value)} />
           </div>
-          <div className="form-field">
-            <label htmlFor="check_out_time">Check-out time</label>
-            <input id="check_out_time" value={form.check_out_time || ''} onChange={(e) => update('check_out_time', e.target.value)} />
-          </div>
-        </div>
 
-        <div className="form-field">
-          <label htmlFor="location_info">Location information</label>
-          <textarea id="location_info" rows={2} value={form.location_info || ''} onChange={(e) => update('location_info', e.target.value)} />
-        </div>
-
-        <button type="submit" className="btn btn--primary" disabled={saving}>
-          {saving ? 'Saving…' : 'Save Settings'}
-        </button>
-      </form>
+          <button type="submit" className="btn btn--primary" disabled={saving}>
+            {saving ? 'Saving…' : 'Save Settings'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

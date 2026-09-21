@@ -52,8 +52,14 @@ export default function Bookings() {
   }
 
   return (
-    <div>
-      <h1 style={{ fontSize: '1.7rem', marginBottom: '1.5rem' }}>Bookings</h1>
+    <div className="admin-page">
+      <div className="admin-page__header">
+        <div>
+          <h1 className="admin-page__title">Bookings</h1>
+          <p className="admin-page__subtitle">Manage reservations, guest details, and booking status.</p>
+        </div>
+      </div>
+
       <ErrorBanner message={error} />
 
       <form onSubmit={handleSearchSubmit} className="toolbar">
@@ -62,23 +68,24 @@ export default function Bookings() {
           placeholder="Search by name, email, or phone"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: '0.55rem 0.8rem', borderRadius: 'var(--radius-sm)', border: '1px solid #cfc4a9', minWidth: '240px' }}
         />
-        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ padding: '0.55rem 0.8rem', borderRadius: 'var(--radius-sm)', border: '1px solid #cfc4a9' }}>
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">All statuses</option>
           {statuses.map((s) => <option key={s} value={s}>{capitalize(s)}</option>)}
         </select>
         <button type="submit" className="icon-btn">Search</button>
       </form>
 
-      {loading && <LoadingBlock lines={5} />}
+      {loading && <div className="admin-card"><LoadingBlock lines={5} /></div>}
 
       {!loading && bookings.length === 0 && (
-        <EmptyState title="No bookings found" description="Try a different search or clear the filters." />
+        <div className="admin-card">
+          <EmptyState title="No bookings found" description="Try a different search or clear the filters." />
+        </div>
       )}
 
       {!loading && bookings.length > 0 && (
-        <div className="data-table-wrapper">
+        <div className="data-table-wrapper admin-card" style={{ padding: 0 }}>
           <table className="data-table">
             <thead>
               <tr>
@@ -153,7 +160,7 @@ function BookingDetailModal({ booking, onClose, onSaveNotes }) {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,35,33,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', zIndex: 90 }}>
-      <div style={{ background: 'var(--color-white)', borderRadius: 'var(--radius-md)', padding: '2rem', maxWidth: '520px', width: '100%', maxHeight: '85vh', overflowY: 'auto' }}>
+      <div style={{ background: 'var(--color-white)', borderRadius: 'var(--radius-md)', padding: '2rem', maxWidth: '520px', width: '100%', maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 18px 40px rgba(28,29,26,0.12)' }}>
         <h3>{booking.full_name}</h3>
         <p style={{ color: 'var(--color-palm)', fontSize: '0.92rem' }}>
           {booking.email} · {booking.phone}{booking.whatsapp_number ? ` · WA: ${booking.whatsapp_number}` : ''}

@@ -15,10 +15,21 @@ export default function Overview() {
   }, []);
 
   return (
-    <div>
-      <h1 style={{ fontSize: '1.7rem', marginBottom: '1.5rem' }}>Dashboard Overview</h1>
+    <div className="admin-page">
+      <div className="admin-page__header">
+        <div>
+          <h1 className="admin-page__title">Dashboard Overview</h1>
+          <p className="admin-page__subtitle">Quick insights into the villa operations.</p>
+        </div>
+      </div>
+
       <ErrorBanner message={error} />
-      {loading ? <LoadingBlock lines={2} /> : data && (
+
+      {loading ? (
+        <div className="admin-card">
+          <LoadingBlock lines={3} />
+        </div>
+      ) : data && (
         <div className="stat-grid">
           <StatCard label="Total bookings" value={data.bookings.total} />
           <StatCard label="Pending inquiries" value={data.bookings.pending} />
