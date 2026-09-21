@@ -5,10 +5,17 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import SectionHeading from '../components/SectionHeading';
 
 const amenities = [
-  { title: 'Private swimming pool', copy: 'A quiet pool framed by tropical planting, open whenever you are.' },
-  { title: 'Tropical gardens', copy: 'Landscaped grounds that soften the heat and screen the villa from the road.' },
-  { title: 'Gated & secure', copy: 'A private, gated property with restricted access for registered guests only.' },
-  { title: 'Beach access', copy: 'A short, easy walk to the sand — no resort crowds in between.' },
+  { title: 'Private swimming pool', copy: 'Cool off in your own secluded pool, surrounded by lush tropical planting and complete privacy.' },
+  { title: 'Tropical gardens', copy: 'Soft landscaping, shaded corners, and ocean air create a calm, restorative setting.' },
+  { title: 'Gated & secure', copy: 'An exclusive, private property with controlled access for peace of mind at all times.' },
+  { title: 'Beach access', copy: 'A short walk to Diani’s sandy shoreline, with the freedom to enjoy the coast without the resort rush.' },
+];
+
+const stats = [
+  { value: '5', label: 'Bedrooms' },
+  { value: '4', label: 'Bathrooms' },
+  { value: '1', label: 'Private pool' },
+  { value: '∞', label: 'Slow luxury' },
 ];
 
 export default function Home() {
@@ -20,46 +27,24 @@ export default function Home() {
         <img src={images.hero} alt="Ocean view from My Place villa terrace" className="hero__image" />
         <div className="hero__overlay" />
         <div className="container hero__content">
-          <p className="eyebrow" style={{ color: 'var(--color-sand)' }}>Diani Beach, Kenya</p>
-          <h1>My Place</h1>
-          <p className="hero__tagline">Private Beachfront Villa Living in Diani Beach, Kenya</p>
+          <p className="eyebrow hero__eyebrow">Private beachfront villa • Diani Beach</p>
+          <h1>Luxury beach living, designed for slowing down.</h1>
+          <p className="hero__tagline">Wake to ocean air, long breakfasts, and an easy rhythm that feels entirely your own.</p>
           <p className="hero__intro">
-            A five-bedroom home on the Indian Ocean, built for slow mornings, long lunches,
-            and days that end at the water. This is not a hotel — it's your villa in Diani.
+            My Place is a five-bedroom sanctuary on the Indian Ocean, curated for family escapes,
+            long weekends, and unforgettable coastal stays in Kenya.
           </p>
           <div className="hero__ctas">
             <Link to="/contact" className="btn btn--primary">Check Availability</Link>
             <Link to="/contact" className="btn btn--light">Book Your Stay</Link>
             <WhatsAppButton settings={settings} label="WhatsApp Us" />
           </div>
-        </div>
-      </section>
 
-      <section className="section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <div>
-            <p className="eyebrow">Welcome</p>
-            <h2>A private home, not a hotel room</h2>
-            <p style={{ color: 'var(--color-palm)' }}>
-              My Place is a private beachfront villa designed for those who value space, serenity,
-              and the natural rhythm of the Indian Ocean. Located in Diani Beach, the villa offers
-              a peaceful escape surrounded by tropical gardens and ocean breezes — with a spacious
-              layout and a private pool built for families, groups, honeymooners, and long-stay guests.
-            </p>
-            <Link to="/about" className="btn btn--outline">Read our story</Link>
-          </div>
-          <img src={images.villaExterior} alt="My Place villa exterior" style={{ borderRadius: 'var(--radius-md)' }} />
-        </div>
-      </section>
-
-      <section className="section section--deep">
-        <div className="container">
-          <SectionHeading eyebrow="Why stay here" title="Space to breathe, ocean at the door" description="Everything about My Place is built around distance from the crowd and closeness to the water." />
-          <div className="grid grid--4">
-            {amenities.map((item) => (
-              <div className="card" key={item.title}>
-                <h3>{item.title}</h3>
-                <p style={{ color: 'var(--color-palm)', fontSize: '0.95rem' }}>{item.copy}</p>
+          <div className="hero__stats">
+            {stats.map((stat) => (
+              <div key={stat.label} className="hero__stat">
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
               </div>
             ))}
           </div>
@@ -67,14 +52,52 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <img src={images.pool} alt="Private villa pool" style={{ borderRadius: 'var(--radius-md)', order: 1 }} />
-          <div style={{ order: 0 }}>
+        <div className="container split-panel">
+          <div className="split-panel__content">
+            <p className="eyebrow">Welcome</p>
+            <h2>Private, seamless, and made for barefoot luxury.</h2>
+            <p>
+              My Place brings together open living spaces, warm natural textures, and a tranquil beachside setting.
+              It is refined without feeling formal — a home designed to feel effortless, restful, and deeply personal.
+            </p>
+            <Link to="/about" className="btn btn--outline">Read our story</Link>
+          </div>
+          <div className="split-panel__media">
+            <img src={images.villaExterior} alt="My Place villa exterior" />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--deep">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Why stay here"
+            title="Everything you need, nothing you don’t."
+            description="From sunrise swims to evening dinners under the stars, every detail is shaped for comfort, privacy, and a slower, easier way of being by the sea."
+            align="center"
+          />
+          <div className="grid grid--4 amenities-grid">
+            {amenities.map((item) => (
+              <div className="card amenity-card" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container split-panel split-panel--reverse">
+          <div className="split-panel__media">
+            <img src={images.pool} alt="Private villa pool" />
+          </div>
+          <div className="split-panel__content">
             <p className="eyebrow">The pool</p>
-            <h2>A private pool, entirely your own</h2>
-            <p style={{ color: 'var(--color-palm)' }}>
-              No shared loungers, no queue for the water. The villa's pool sits within its own
-              garden, open to guests at any hour, day or night.
+            <h2>A private pool that turns every day into a holiday.</h2>
+            <p>
+              The villa’s private pool sits within a lush garden setting, creating a secluded escape for dawn swims,
+              quiet reading afternoons, and sunset evenings with friends and family.
             </p>
             <Link to="/villa" className="btn btn--outline">See the villa</Link>
           </div>
@@ -83,41 +106,42 @@ export default function Home() {
 
       <section className="section section--deep">
         <div className="container">
-          <SectionHeading eyebrow="Gallery" title="A look inside My Place" />
-          <div className="grid grid--3">
+          <SectionHeading eyebrow="Gallery" title="A look inside My Place" align="center" />
+          <div className="grid grid--3 gallery-grid">
             {[images.livingRoom, images.bedroom, images.garden].map((src) => (
-              <img key={src} src={src} alt="My Place villa interior" style={{ borderRadius: 'var(--radius-md)', height: '260px', objectFit: 'cover' }} />
+              <img key={src} src={src} alt="My Place villa interior" className="gallery-image" />
             ))}
           </div>
-          <div style={{ marginTop: '2rem' }}>
+          <div className="cta-row">
             <Link to="/gallery" className="btn btn--outline">View full gallery</Link>
           </div>
         </div>
       </section>
 
       <section className="section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          <div>
+        <div className="container split-panel">
+          <div className="split-panel__content">
             <p className="eyebrow">Experience Diani</p>
-            <h2>Beyond the villa gates</h2>
-            <p style={{ color: 'var(--color-palm)' }}>
-              Diani Beach is one of East Africa's most celebrated stretches of coastline —
-              known for its white sand, coral reef, kite surfing, and relaxed beach clubs.
-              My Place sits close enough to enjoy it all, far enough to stay quiet.
+            <h2>Discover the coastline beyond your doorstep.</h2>
+            <p>
+              Diani Beach is celebrated for its powder-soft sand, reef breaks, and laid-back beach clubs — a perfect setting for surfing,
+              snorkeling, sunset dinners, and relaxed afternoons in the sun.
             </p>
             <Link to="/experience-diani" className="btn btn--outline">Explore the area</Link>
           </div>
-          <img src={images.diani} alt="Diani Beach coastline" style={{ borderRadius: 'var(--radius-md)' }} />
+          <div className="split-panel__media">
+            <img src={images.diani} alt="Diani Beach coastline" />
+          </div>
         </div>
       </section>
 
       <section className="section section--lagoon" style={{ textAlign: 'center' }}>
         <div className="container">
           <h2>Ready to plan your stay?</h2>
-          <p style={{ maxWidth: '54ch', margin: '0 auto 1.75rem', color: 'rgba(246,241,231,0.85)' }}>
-            Tell us your dates and group size — we'll confirm availability and walk you through booking.
+          <p className="hero__cta-copy">
+            Let us know your dates and group size, and we’ll help you arrange your next Diani escape.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero__ctas hero__ctas--center">
             <Link to="/contact" className="btn btn--primary">Check Availability</Link>
             <WhatsAppButton settings={settings} label="Chat on WhatsApp" />
           </div>
@@ -131,39 +155,168 @@ export default function Home() {
           display: flex;
           align-items: flex-end;
           overflow: hidden;
+          background: #0a1d1e;
         }
+
         .hero__image {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
+          filter: saturate(0.9) contrast(1.02);
         }
+
         .hero__overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(0deg, rgba(10,32,32,0.82) 5%, rgba(10,32,32,0.25) 55%, rgba(10,32,32,0.15) 100%);
+          background: linear-gradient(90deg, rgba(8, 20, 21, 0.75) 0%, rgba(8, 20, 21, 0.54) 30%, rgba(8, 20, 21, 0.26) 100%);
         }
+
         .hero__content {
           position: relative;
           color: var(--color-white);
-          padding-bottom: 5rem;
-          padding-top: 8rem;
+          padding-top: 7rem;
+          padding-bottom: 4rem;
+          z-index: 1;
         }
+
         .hero__content h1 {
           color: var(--color-white);
-          margin-bottom: 0.2rem;
+          margin-bottom: 1rem;
+          max-width: 760px;
         }
+
+        .hero__eyebrow {
+          color: rgba(255,255,255,0.8);
+          letter-spacing: 0.14em;
+        }
+
         .hero__tagline {
           font-family: var(--font-display);
-          font-size: clamp(1.1rem, 2vw, 1.5rem);
-          color: var(--color-sand);
-          margin-bottom: 1.25rem;
+          font-size: clamp(1.2rem, 2vw, 1.8rem);
+          color: var(--color-sand-soft);
+          max-width: 52ch;
+          margin-bottom: 1.1rem;
         }
-        .hero__intro { max-width: 46ch; color: rgba(246,241,231,0.9); }
-        .hero__ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+
+        .hero__intro {
+          max-width: 52ch;
+          color: rgba(255,255,255,0.8);
+          font-size: 1.04rem;
+        }
+
+        .hero__ctas {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-top: 1.5rem;
+        }
+
+        .hero__ctas--center {
+          justify-content: center;
+        }
+
+        .hero__stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 1rem;
+          margin-top: 2rem;
+          max-width: 700px;
+        }
+
+        .hero__stat {
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 18px;
+          padding: 1.1rem 1rem;
+          backdrop-filter: blur(8px);
+        }
+
+        .hero__stat strong {
+          display: block;
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          font-family: var(--font-display);
+          color: var(--color-gold);
+          margin-bottom: 0.25rem;
+        }
+
+        .hero__stat span {
+          color: rgba(255,255,255,0.75);
+          font-size: 0.9rem;
+        }
+
+        .split-panel {
+          display: grid;
+          grid-template-columns: 1.1fr 1fr;
+          gap: clamp(2rem, 5vw, 5rem);
+          align-items: center;
+        }
+
+        .split-panel--reverse {
+          grid-template-columns: 1fr 1.1fr;
+        }
+
+        .split-panel__media img {
+          width: 100%;
+          height: 100%;
+          min-height: 440px;
+          object-fit: cover;
+          border-radius: 30px;
+          box-shadow: var(--shadow-soft);
+        }
+
+        .split-panel__content {
+          max-width: 600px;
+        }
+
+        .amenities-grid .card {
+          min-height: 240px;
+        }
+
+        .amenity-card h3 {
+          font-size: 1.35rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .amenity-card p {
+          color: var(--color-muted);
+          margin-bottom: 0;
+        }
+
+        .gallery-grid {
+          margin-top: 2rem;
+        }
+
+        .gallery-image {
+          width: 100%;
+          height: 320px;
+          object-fit: cover;
+          border-radius: 24px;
+          box-shadow: var(--shadow-soft);
+        }
+
+        .cta-row {
+          display: flex;
+          justify-content: center;
+          margin-top: 2.25rem;
+        }
+
+        .hero__cta-copy {
+          max-width: 580px;
+          margin: 0 auto 1.5rem;
+          color: rgba(255,255,255,0.8);
+        }
+
         @media (max-width: 820px) {
-          .container[style] { grid-template-columns: 1fr !important; }
+          .split-panel,
+          .split-panel--reverse {
+            grid-template-columns: 1fr;
+          }
+
+          .split-panel__media img {
+            min-height: 320px;
+          }
         }
       `}</style>
     </>
