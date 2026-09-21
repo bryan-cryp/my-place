@@ -58,9 +58,9 @@ export default function Navbar() {
           position: sticky;
           top: 0;
           z-index: 30;
-          background: rgba(9, 23, 25, 0.82);
-          backdrop-filter: blur(18px);
-          border-bottom: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(28, 29, 26, 0.08);
         }
 
         .navbar__inner {
@@ -73,34 +73,33 @@ export default function Navbar() {
 
         .navbar__brand {
           font-family: var(--font-display);
-          font-size: 1.55rem;
+          font-size: 1.45rem;
           text-decoration: none;
-          color: var(--color-white);
+          color: var(--color-charcoal);
           letter-spacing: 0.02em;
         }
 
         .navbar__links {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 1.4rem;
         }
 
         .navbar__links a {
           text-decoration: none;
-          font-size: 0.92rem;
-          color: rgba(255,255,255,0.8);
+          font-size: 0.9rem;
+          color: var(--color-muted);
           transition: color 0.2s var(--ease);
         }
 
         .navbar__links a:hover,
         .navbar__links a.active {
-          color: var(--color-gold);
+          color: var(--color-sage-deep);
         }
 
         .navbar__cta {
-          padding: 0.7rem 1.3rem;
+          padding: 0.72rem 1.25rem;
           min-height: unset;
-          box-shadow: none;
         }
 
         .navbar__toggle {
@@ -114,9 +113,9 @@ export default function Navbar() {
         }
 
         .navbar__toggle span {
-          width: 24px;
+          width: 22px;
           height: 2px;
-          background: var(--color-white);
+          background: var(--color-charcoal);
           border-radius: 10px;
         }
 
@@ -128,16 +127,16 @@ export default function Navbar() {
             top: 68px;
             left: 0;
             right: 0;
-            background: rgba(9, 23, 25, 0.96);
+            background: rgba(255,255,255,0.98);
             flex-direction: column;
             align-items: flex-start;
             padding: 1.5rem var(--gutter) 2rem;
-            gap: 0.9rem;
+            gap: 1rem;
             transform: translateY(-8px);
             opacity: 0;
             pointer-events: none;
             transition: all 0.2s var(--ease);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(28,29,26,0.08);
           }
 
           .navbar__links.is-open {

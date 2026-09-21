@@ -5,17 +5,17 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import SectionHeading from '../components/SectionHeading';
 
 const amenities = [
-  { title: 'Private swimming pool', copy: 'Cool off in your own secluded pool, surrounded by lush tropical planting and complete privacy.' },
-  { title: 'Tropical gardens', copy: 'Soft landscaping, shaded corners, and ocean air create a calm, restorative setting.' },
-  { title: 'Gated & secure', copy: 'An exclusive, private property with controlled access for peace of mind at all times.' },
-  { title: 'Beach access', copy: 'A short walk to Diani’s sandy shoreline, with the freedom to enjoy the coast without the resort rush.' },
+  { title: 'Private swimming pool', copy: 'Cool off in your own secluded pool, framed by tropical planting and complete privacy.' },
+  { title: 'Tropical gardens', copy: 'Soft landscaping and shaded corners create an easy, restful atmosphere from morning to dusk.' },
+  { title: 'Gated & secure', copy: 'A calm, exclusive setting that feels private and sheltered throughout your stay.' },
+  { title: 'Beach access', copy: 'A short walk to Diani’s soft shoreline, with the coast close by and the villa still tranquil.' },
 ];
 
 const stats = [
   { value: '5', label: 'Bedrooms' },
   { value: '4', label: 'Bathrooms' },
   { value: '1', label: 'Private pool' },
-  { value: '∞', label: 'Slow luxury' },
+  { value: '∞', label: 'Slow mornings' },
 ];
 
 export default function Home() {
@@ -27,12 +27,12 @@ export default function Home() {
         <img src={images.hero} alt="Ocean view from My Place villa terrace" className="hero__image" />
         <div className="hero__overlay" />
         <div className="container hero__content">
-          <p className="eyebrow hero__eyebrow">Private beachfront villa • Diani Beach</p>
-          <h1>Luxury beach living, designed for slowing down.</h1>
-          <p className="hero__tagline">Wake to ocean air, long breakfasts, and an easy rhythm that feels entirely your own.</p>
+          <p className="eyebrow hero__eyebrow">Diani Beach, Kenya</p>
+          <h1>Simple luxury by the sea.</h1>
+          <p className="hero__tagline">A private beachfront villa designed for easy, beautiful days.</p>
           <p className="hero__intro">
-            My Place is a five-bedroom sanctuary on the Indian Ocean, curated for family escapes,
-            long weekends, and unforgettable coastal stays in Kenya.
+            My Place is a five-bedroom home on the Indian Ocean, created for family stays,
+            quiet escapes, and long afternoons that feel both restful and unforgettable.
           </p>
           <div className="hero__ctas">
             <Link to="/contact" className="btn btn--primary">Check Availability</Link>
@@ -55,10 +55,10 @@ export default function Home() {
         <div className="container split-panel">
           <div className="split-panel__content">
             <p className="eyebrow">Welcome</p>
-            <h2>Private, seamless, and made for barefoot luxury.</h2>
+            <h2>A private home, not a hotel room.</h2>
             <p>
-              My Place brings together open living spaces, warm natural textures, and a tranquil beachside setting.
-              It is refined without feeling formal — a home designed to feel effortless, restful, and deeply personal.
+              Thoughtfully designed for comfort and calm, My Place blends natural textures,
+              open living spaces, and easy coastal living into a warm, welcoming beach retreat.
             </p>
             <Link to="/about" className="btn btn--outline">Read our story</Link>
           </div>
@@ -72,8 +72,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             eyebrow="Why stay here"
-            title="Everything you need, nothing you don’t."
-            description="From sunrise swims to evening dinners under the stars, every detail is shaped for comfort, privacy, and a slower, easier way of being by the sea."
+            title="Comfort that feels effortless."
+            description="From sunrise swims to sunset dinners, every detail is arranged to make your time by the ocean feel quiet, natural, and unhurried."
             align="center"
           />
           <div className="grid grid--4 amenities-grid">
@@ -94,10 +94,10 @@ export default function Home() {
           </div>
           <div className="split-panel__content">
             <p className="eyebrow">The pool</p>
-            <h2>A private pool that turns every day into a holiday.</h2>
+            <h2>Everything you want, within reach.</h2>
             <p>
-              The villa’s private pool sits within a lush garden setting, creating a secluded escape for dawn swims,
-              quiet reading afternoons, and sunset evenings with friends and family.
+              The villa’s private pool sits in a secluded garden setting, offering a place to cool off,
+              stretch out, and enjoy the coastal air without ever leaving the property.
             </p>
             <Link to="/villa" className="btn btn--outline">See the villa</Link>
           </div>
@@ -122,10 +122,10 @@ export default function Home() {
         <div className="container split-panel">
           <div className="split-panel__content">
             <p className="eyebrow">Experience Diani</p>
-            <h2>Discover the coastline beyond your doorstep.</h2>
+            <h2>The coast is close, but the quiet remains.</h2>
             <p>
-              Diani Beach is celebrated for its powder-soft sand, reef breaks, and laid-back beach clubs — a perfect setting for surfing,
-              snorkeling, sunset dinners, and relaxed afternoons in the sun.
+              Diani Beach offers white sand, blue water, reef breaks, sunsets, and a laid-back rhythm that matches the villa perfectly.
+              You’re close to everything, but never in the middle of it.
             </p>
             <Link to="/experience-diani" className="btn btn--outline">Explore the area</Link>
           </div>
@@ -139,7 +139,7 @@ export default function Home() {
         <div className="container">
           <h2>Ready to plan your stay?</h2>
           <p className="hero__cta-copy">
-            Let us know your dates and group size, and we’ll help you arrange your next Diani escape.
+            Tell us your dates and group size, and we’ll help you arrange your next Diani escape.
           </p>
           <div className="hero__ctas hero__ctas--center">
             <Link to="/contact" className="btn btn--primary">Check Availability</Link>
@@ -151,11 +151,11 @@ export default function Home() {
       <style>{`
         .hero {
           position: relative;
-          min-height: 92vh;
+          min-height: 90vh;
           display: flex;
           align-items: flex-end;
           overflow: hidden;
-          background: #0a1d1e;
+          background: #d9d3c9;
         }
 
         .hero__image {
@@ -164,46 +164,46 @@ export default function Home() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: saturate(0.9) contrast(1.02);
+          filter: saturate(0.8) contrast(1.02);
         }
 
         .hero__overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(90deg, rgba(8, 20, 21, 0.75) 0%, rgba(8, 20, 21, 0.54) 30%, rgba(8, 20, 21, 0.26) 100%);
+          background: linear-gradient(90deg, rgba(16, 18, 15, 0.66) 0%, rgba(16, 18, 15, 0.42) 35%, rgba(16,18,15,0.2) 100%);
         }
 
         .hero__content {
           position: relative;
           color: var(--color-white);
           padding-top: 7rem;
-          padding-bottom: 4rem;
+          padding-bottom: 3.5rem;
           z-index: 1;
         }
 
         .hero__content h1 {
           color: var(--color-white);
-          margin-bottom: 1rem;
-          max-width: 760px;
+          margin-bottom: 0.8rem;
+          max-width: 650px;
         }
 
         .hero__eyebrow {
           color: rgba(255,255,255,0.8);
-          letter-spacing: 0.14em;
+          letter-spacing: 0.12em;
         }
 
         .hero__tagline {
           font-family: var(--font-display);
-          font-size: clamp(1.2rem, 2vw, 1.8rem);
-          color: var(--color-sand-soft);
-          max-width: 52ch;
-          margin-bottom: 1.1rem;
+          font-size: clamp(1.16rem, 2vw, 1.75rem);
+          color: #f8f1e8;
+          max-width: 48ch;
+          margin-bottom: 1rem;
         }
 
         .hero__intro {
           max-width: 52ch;
-          color: rgba(255,255,255,0.8);
-          font-size: 1.04rem;
+          color: rgba(255,255,255,0.82);
+          font-size: 1.02rem;
         }
 
         .hero__ctas {
@@ -222,45 +222,44 @@ export default function Home() {
           grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
           gap: 1rem;
           margin-top: 2rem;
-          max-width: 700px;
+          max-width: 620px;
         }
 
         .hero__stat {
           background: rgba(255,255,255,0.08);
           border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 18px;
-          padding: 1.1rem 1rem;
-          backdrop-filter: blur(8px);
+          border-radius: 16px;
+          padding: 1rem 0.8rem;
         }
 
         .hero__stat strong {
           display: block;
-          font-size: clamp(1.5rem, 3vw, 2rem);
+          font-size: clamp(1.5rem, 2.8vw, 2rem);
           font-family: var(--font-display);
-          color: var(--color-gold);
-          margin-bottom: 0.25rem;
+          color: #f3e8d6;
+          margin-bottom: 0.2rem;
         }
 
         .hero__stat span {
           color: rgba(255,255,255,0.75);
-          font-size: 0.9rem;
+          font-size: 0.85rem;
         }
 
         .split-panel {
           display: grid;
-          grid-template-columns: 1.1fr 1fr;
+          grid-template-columns: 1.05fr 1fr;
           gap: clamp(2rem, 5vw, 5rem);
           align-items: center;
         }
 
         .split-panel--reverse {
-          grid-template-columns: 1fr 1.1fr;
+          grid-template-columns: 1fr 1.05fr;
         }
 
         .split-panel__media img {
           width: 100%;
           height: 100%;
-          min-height: 440px;
+          min-height: 420px;
           object-fit: cover;
           border-radius: 30px;
           box-shadow: var(--shadow-soft);
@@ -271,12 +270,12 @@ export default function Home() {
         }
 
         .amenities-grid .card {
-          min-height: 240px;
+          min-height: 230px;
         }
 
         .amenity-card h3 {
-          font-size: 1.35rem;
-          margin-bottom: 0.75rem;
+          font-size: 1.3rem;
+          margin-bottom: 0.7rem;
         }
 
         .amenity-card p {
@@ -292,7 +291,7 @@ export default function Home() {
           width: 100%;
           height: 320px;
           object-fit: cover;
-          border-radius: 24px;
+          border-radius: 22px;
           box-shadow: var(--shadow-soft);
         }
 
@@ -303,9 +302,9 @@ export default function Home() {
         }
 
         .hero__cta-copy {
-          max-width: 580px;
+          max-width: 560px;
           margin: 0 auto 1.5rem;
-          color: rgba(255,255,255,0.8);
+          color: rgba(28, 29, 26, 0.74);
         }
 
         @media (max-width: 820px) {
@@ -315,7 +314,7 @@ export default function Home() {
           }
 
           .split-panel__media img {
-            min-height: 320px;
+            min-height: 310px;
           }
         }
       `}</style>

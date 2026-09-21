@@ -50,38 +50,38 @@ export default function Footer() {
 
       <style>{`
         .footer {
-          background: linear-gradient(180deg, #091719 0%, #0d1e21 100%);
-          color: rgba(255,255,255,0.8);
+          background: linear-gradient(180deg, #171916 0%, #1d201d 100%);
+          color: rgba(255,255,255,0.75);
           padding: 3.5rem 0 1.5rem;
         }
 
         .footer h4 {
           color: var(--color-white);
           font-family: var(--font-body);
-          font-size: 0.92rem;
+          font-size: 0.8rem;
           font-weight: 700;
-          margin-bottom: 1rem;
-          letter-spacing: 0.08em;
+          margin-bottom: 0.9rem;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
         }
 
         .footer__brand {
           font-family: var(--font-display);
-          font-size: 1.8rem;
+          font-size: 1.7rem;
           color: var(--color-white);
-          margin: 0 0 0.3rem;
+          margin: 0 0 0.35rem;
         }
 
         .footer__tagline {
-          max-width: 30ch;
-          margin-bottom: 1.3rem;
+          max-width: 32ch;
+          margin-bottom: 1.2rem;
           font-size: 0.94rem;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255,255,255,0.72);
         }
 
         .footer__grid {
           display: grid;
-          grid-template-columns: 1.4fr 1fr 1fr 1fr;
+          grid-template-columns: 1.3fr 1fr 1fr 1fr;
           gap: 2rem;
         }
 
@@ -91,7 +91,7 @@ export default function Footer() {
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 0.65rem;
+          gap: 0.62rem;
           font-size: 0.92rem;
         }
 
@@ -101,11 +101,11 @@ export default function Footer() {
         }
 
         .footer a:hover {
-          color: var(--color-gold);
+          color: var(--color-sand-deep);
         }
 
         .footer__bottom {
-          margin-top: 2.5rem;
+          margin-top: 2.4rem;
           padding-top: 1.4rem;
           border-top: 1px solid rgba(255,255,255,0.12);
           display: flex;
