@@ -59,7 +59,12 @@ async function updateBooking(req, res, next) {
     const existing = await bookingModel.findById(req.params.id);
     if (!existing) return res.status(404).json({ error: 'Booking not found.' });
 
-    const updated = await bookingModel.update(req.params.id, req.body);
+    const fields = { ...req.body };
+    if (Object.prototype.hasOwnProperty.call(fields, 'adminNotes')) {
+      fields.admin_notes = fields.adminNotes;
+      delete fields.adminNotes;
+    }
+    const updated = await bookingModel.update(req.params.id, fields);
     return res.json({ booking: updated });
   } catch (err) {
     return next(err);

@@ -7,6 +7,7 @@
  */
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
+require('../config/env');
 const pool = require('../config/db');
 const adminModel = require('../models/adminModel');
 

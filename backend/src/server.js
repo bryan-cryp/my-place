@@ -15,7 +15,13 @@ const settingsRoutes = require('./routes/settingsRoutes');
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: env.corsOrigin, credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || env.corsOrigin.includes(origin)) return callback(null, true);
+    return callback(new Error('Origin is not allowed by CORS.'));
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
 

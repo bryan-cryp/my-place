@@ -75,6 +75,19 @@ Edit `.env`:
 | `CONTACT_EMAIL` | Default contact email |
 | `INITIAL_ADMIN_*` | Used once by the `create-admin` script |
 
+For deployments where secrets should not be stored as plaintext files, keep the source
+values in `backend/.env`, set a deployment-only key, and generate the encrypted file:
+
+```powershell
+$env:MY_PLACE_ENCRYPTION_KEY="use-a-long-random-secret-stored-by-your-host"
+npm run encrypt-env
+```
+
+The backend automatically reads `backend/.env.enc` when that key is present. In
+production, it refuses to start if the encrypted file cannot be decrypted, if the key is
+missing, or if `JWT_SECRET`/`DATABASE_URL` is not configured. Never commit `.env`, `.env.enc`,
+or the encryption key.
+
 Install dependencies and create the first admin account:
 
 ```bash

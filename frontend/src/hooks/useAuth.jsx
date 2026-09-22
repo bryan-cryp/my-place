@@ -6,7 +6,15 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [admin, setAdmin] = useState(() => {
     const stored = localStorage.getItem('myplace_admin');
-    return stored ? JSON.parse(stored) : null;
+    const token = localStorage.getItem('myplace_admin_token');
+    if (!stored || !token) return null;
+    try {
+      return JSON.parse(stored);
+    } catch {
+      localStorage.removeItem('myplace_admin');
+      localStorage.removeItem('myplace_admin_token');
+      return null;
+    }
   });
 
   const login = useCallback(async (email, password) => {
