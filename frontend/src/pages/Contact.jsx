@@ -111,7 +111,7 @@ export default function Contact() {
               </div>
               <div className="form-field">
                 <label htmlFor="checkOut">Check-out date</label>
-                <input id="checkOut" type="date" value={form.checkOut} onChange={(e) => update('checkOut', e.target.value)} />
+                <input id="checkOut" type="date" min={form.checkIn || undefined} value={form.checkOut} onChange={(e) => update('checkOut', e.target.value)} />
                 {errors.checkOut && <span className="form-error">{errors.checkOut}</span>}
               </div>
             </div>

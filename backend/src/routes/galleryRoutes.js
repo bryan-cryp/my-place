@@ -24,7 +24,13 @@ router.post(
 router.put(
   '/:id',
   requireAuth,
-  [param('id').isUUID()],
+  [
+    param('id').isUUID(),
+    body('title').optional().trim().notEmpty().isLength({ max: 150 }),
+    body('category').optional().trim().notEmpty().isLength({ max: 60 }),
+    body('imageUrl').optional().isURL().withMessage('A valid image URL is required.'),
+    body('displayOrder').optional().isInt(),
+  ],
   validate,
   galleryController.updateImage,
 );

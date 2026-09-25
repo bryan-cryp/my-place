@@ -55,6 +55,13 @@ router.put(
   [
     param('id').isUUID(),
     body('status').optional().isIn(statuses),
+    body('adminNotes').optional().isString().isLength({ max: 5000 }),
+    body('checkIn').optional().isISO8601(),
+    body('checkOut').optional().isISO8601(),
+    body('adults').optional().isInt({ min: 1 }),
+    body('children').optional().isInt({ min: 0 }),
+    body('bookingType').optional().isIn(bookingTypes),
+    body('airportTransfer').optional().isBoolean(),
   ],
   validate,
   bookingController.updateBooking,

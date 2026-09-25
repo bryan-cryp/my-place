@@ -29,6 +29,10 @@ export default function Calendar() {
       setError('Start and end dates are required.');
       return;
     }
+    if (new Date(form.endDate) <= new Date(form.startDate)) {
+      setError('End date must be after the start date.');
+      return;
+    }
     try {
       await api.post('/availability', form);
       setForm({ startDate: '', endDate: '', reason: '' });
@@ -69,7 +73,7 @@ export default function Calendar() {
             </div>
             <div className="form-field">
               <label htmlFor="endDate">End date</label>
-              <input id="endDate" type="date" value={form.endDate} onChange={(e) => setForm((f) => ({ ...f, endDate: e.target.value }))} />
+              <input id="endDate" type="date" min={form.startDate || undefined} value={form.endDate} onChange={(e) => setForm((f) => ({ ...f, endDate: e.target.value }))} />
             </div>
           </div>
           <div className="form-field">

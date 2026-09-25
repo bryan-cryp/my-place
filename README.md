@@ -37,6 +37,28 @@ touching source code.
 
 ## 3. Database setup
 
+### Fast local setup with Docker Desktop
+
+If Docker Desktop is installed, this project includes a ready-to-use local PostgreSQL
+database. From the project root, run:
+
+```powershell
+docker compose up -d postgres
+```
+
+It creates `myplace_db` and loads `database/schema.sql` automatically. Set this exact
+value in `backend/.env` for the included local database:
+
+```env
+DATABASE_URL=postgresql://myplace_user:myplace_pass@localhost:5432/myplace_db
+```
+
+Check the database is ready with `docker compose ps`. To start again later, use the
+same `docker compose up -d postgres` command. Do not use `docker compose down -v`
+unless you intentionally want to erase all local booking data.
+
+### Manual PostgreSQL setup
+
 1. Create a database and a dedicated user:
 
    ```sql
@@ -56,9 +78,9 @@ touching source code.
 
 ## 4. Backend setup
 
-```bash
+```powershell
 cd backend
-cp .env.example .env
+Copy-Item .env.example .env
 ```
 
 Edit `.env`:
@@ -104,18 +126,24 @@ npm start        # production
 
 Confirm it's running: `GET http://localhost:5000/api/health`
 
+For a complete local readiness check (including PostgreSQL), use
+`GET http://localhost:5000/api/ready`. A `500` response means the API is running but
+the database is unavailable or its connection details are incorrect.
+
 ## 5. Frontend setup
 
-```bash
+```powershell
 cd frontend
-cp .env.example .env
+Copy-Item .env.example .env
 ```
 
-Set `VITE_API_URL` to your backend's API base (e.g. `http://localhost:5000/api`).
+For local development, keep `VITE_API_URL=/api`; Vite proxies those requests to
+`http://localhost:5000` so the browser stays on one localhost origin. Set it to your
+public API base only when building for a separately hosted frontend.
 
-```bash
-npm install
-npm run dev
+```powershell
+npm.cmd install
+npm.cmd run dev
 ```
 
 Visit `http://localhost:5173`. The admin dashboard is at `/admin/login`.
@@ -225,6 +253,12 @@ npm run create-admin -- --name="Second Admin" --email=second@example.com --passw
 - [ ] Regularly rotate the admin password and `JWT_SECRET` if you suspect exposure
 
 ## 11. Troubleshooting
+
+- **`npm` is blocked by PowerShell execution policy** — use `npm.cmd` in PowerShell,
+  for example `npm.cmd run dev` or `npm.cmd run build`.
+- **`/api/ready` returns 500 / connection refused on port 5432** — start PostgreSQL
+  (`docker compose up -d postgres`) or start your local PostgreSQL service, then verify
+  that `DATABASE_URL` in `backend/.env` points to that database.
 
 - **API won't start / "DATABASE_URL is not set"** — confirm `backend/.env` exists and is
   loaded (it isn't committed to git on purpose).
